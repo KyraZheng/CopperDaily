@@ -1,7 +1,7 @@
 <template>
-  <div>cooper.vue
-    <Nav/>
-  </div>
+  <Layout>
+  <p>copper.vue</p>
+  </Layout>
 
 </template>
 
@@ -10,7 +10,3 @@
     name: 'Copper'
   };
 </script>
-
-<style scoped lang="scss">
-
-</style>

@@ -1,11 +1,6 @@
 <template>
 <div>
   <router-view/>
-  <hr/>
-    <router-link to="/labels">明细</router-link>|
-  <router-link to="/copper">记一笔</router-link> |
-      <router-link to="/statistics">统计</router-link>
-
 </div>
 
 </template>

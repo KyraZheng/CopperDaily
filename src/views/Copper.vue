@@ -1,5 +1,8 @@
 <template>
-  <div>cooper.vue</div>
+  <div>cooper.vue
+    <Nav/>
+  </div>
+
 </template>
 
 <script lang="ts">

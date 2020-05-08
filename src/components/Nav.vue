@@ -1,14 +1,14 @@
 <template>
   <nav>
-  <router-link to="/labels" class="item">
+  <router-link to="/labels" class="item" active-class="selected">
     <Icon name="labels"/>
     标签
   </router-link>
-  <router-link to="/copper" class="item">
+  <router-link to="/copper" class="item" active-class="selected">
     <Icon name="copper"/>
     记一笔
   </router-link>
-  <router-link to="/statistics" class="item">
+  <router-link to="/statistics" class="item" active-class="selected">
     <Icon name="statistics"/>
     统计
   </router-link>
@@ -21,26 +21,29 @@
   };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped >
 nav {
   display: flex;
-  box-shadow: 0 0 3px rgba(0,0,0,1);
+  box-shadow: 0 0 3px rgba(0,0,0,0.25);
   flex-direction: row;
-  padding: 4px;
+  padding:3px;
+  font-size: 12px;
+color: #444444;
 
-> .item {
-  font-size: 14px;
+  > .item {
   padding: 2px 0;
   width: 33.333333%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-.icon{
+ .icon {
   width: 32px;
   height: 32px;
 }
 }
-
+ > .item.selected {
+  color: #42b983;
+}
 }
 </style>

@@ -18,7 +18,7 @@
   .nav-wrapper {
     display: flex;
     flex-direction: column;
-    height:100vh ;
+    height:91vh ;
   }
   .content {
     overflow: auto;

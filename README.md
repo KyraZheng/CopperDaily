@@ -1,4 +1,4 @@
-# melon
+# CopperDaily
 
 ## Project setup
 ```

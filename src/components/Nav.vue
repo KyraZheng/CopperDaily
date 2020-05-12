@@ -43,7 +43,7 @@ color: #444444;
 }
 }
  > .item.selected {
-  color: #42b983;
+  color: CadetBlue;
 }
 }
 </style>

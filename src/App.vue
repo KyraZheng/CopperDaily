@@ -13,6 +13,7 @@
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.5;
     font-family: $font-hei;
+    font-size: 16px;
   }
   .title {
 padding-left: 12px;

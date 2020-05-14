@@ -1,6 +1,5 @@
 <template>
 <Layout>
-  labels.vue
 </Layout>
 </template>
 

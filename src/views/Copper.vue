@@ -1,13 +1,13 @@
 <template>
   <Layout content-class="xxx">
     <NumberPad/>
-    <types/>
-    <notes/>
-    <tags/>
+    <Types/>
+    <Notes/>
+    <Tags :data-source="tags"/>
   </Layout>
 </template>
 
-<script lang="ts">
+<script>
   import Notes from '@/components/Copper/Notes.vue'
   import NumberPad from '@/components/Copper/NumberPad.vue'
   import Tags from '@/components/Copper/Tags.vue'
@@ -15,8 +15,11 @@
 
   export default {
     name: 'Copper',
-    components: {Types, Tags, NumberPad, Notes}
-  }
+    components: {Types, Tags, NumberPad, Notes},
+    data() {
+      return {
+    tags:['衣','食','住','行']
+  }}}
 </script>
 
 <style lang="scss">

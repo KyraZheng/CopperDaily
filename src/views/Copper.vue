@@ -1,9 +1,9 @@
 <template>
   <Layout content-class="xxx">
-    <NumberPad @update:value="onUpdateAmount"/>
+    <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
     <Types @update:value="onUpdateType"/>
     <Notes @update:value="onUpdateNotes"/>
-    <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
+    <Tags  @update:value="onUpdateTags"/>
   </Layout>
 </template>
 
@@ -13,7 +13,7 @@
   import NumberPad from '@/components/Copper/NumberPad.vue';
   import Tags from '@/components/Copper/Tags.vue';
   import Types from '@/components/Copper/Types.vue';
-  import {Component} from 'vue-property-decorator';
+  import {Component, Watch} from 'vue-property-decorator';
 
   type Record = {
     tags: string[];
@@ -29,6 +29,7 @@
   export default class Copper extends Vue {
 
     tags = ['衣', '食', '住', '行'];
+    records: Record[] = [];
     record: Record = {
       tags: [], notes: '', type: '-', amount: 0
     };
@@ -48,6 +49,18 @@
     onUpdateAmount(value: string) {
       this.record.amount = parseFloat(value);
     }
+
+    saveRecord() {
+      const record2 = JSON.parse(JSON.stringify(this.record));
+      this.records.push(record2);
+      console.log(this.records);
+    }
+
+    @Watch('records')
+    onRecordListChange() {
+      window.localStorage.setItem('records', JSON.stringify(this.records));
+    }
+
   }
 </script>
 

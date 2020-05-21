@@ -1,6 +1,5 @@
 <template>
   <Layout content-class="contentClass">
-    {{records}}
     <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
     <Types :value.sync="record.type"/>
     <Notes @update:value="onUpdateNotes"/>
@@ -15,16 +14,9 @@
   import Tags from '@/components/Copper/Tags.vue';
   import Types from '@/components/Copper/Types.vue';
   import {Component, Watch} from 'vue-property-decorator';
+  import model from '@/model';
 
-  window.localStorage.setItem('version', '0.0.1');
-
-  type Record = {
-    tags: string[];
-    notes: string;
-    type: string;
-    amount: number;
-    createdAt?: Date
-  }
+  const recordList = model.fetch();
 
   @Component({
     components: {Types, Tags, NumberPad, Notes}
@@ -33,8 +25,8 @@
   export default class Copper extends Vue {
 
     tags = ['衣', '食', '住', '行'];
-    records: Record = JSON.parse(window.localStorage.getItem('records') || '[]');
-    record: Record = {
+    recordList: RecordItem[] = recordList;
+    record: RecordItem = {
       tags: [], notes: '', type: '-', amount: 0
     };
 
@@ -51,14 +43,14 @@
     }
 
     saveRecord() {
-      const record2: Record = JSON.parse(JSON.stringify(this.record));
+      const record2: RecordItem = model.clone(this.record);
       record2.createdAt = new Date();
-      this.records.push(record2);
+      this.recordList.push(record2);
     }
 
     @Watch('records')
     onRecordListChange() {
-      window.localStorage.setItem('records', JSON.stringify(this.records));
+      model.save(this.recordList);
     }
   }
 </script>

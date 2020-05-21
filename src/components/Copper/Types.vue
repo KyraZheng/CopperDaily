@@ -20,12 +20,7 @@
       if (type !== '+' && type !== '-') {
         throw new Error('type is unknown');
       }
-      this.$emit('update:value',type)
-    }
-
-    @Watch('type')
-    onTypeChanged(value: string) {
-      this.$emit('update:value', value);
+      this.$emit('update:value', type);
     }
   }
 

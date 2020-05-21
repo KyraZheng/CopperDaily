@@ -1,9 +1,10 @@
 <template>
-  <Layout content-class="xxx">
+  <Layout content-class="contentClass">
+    {{records}}
     <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
-    <Types @update:value="onUpdateType"/>
+    <Types :value.sync="record.type"/>
     <Notes @update:value="onUpdateNotes"/>
-    <Tags  @update:value="onUpdateTags"/>
+    <Tags @update:value="onUpdateTags"/>
   </Layout>
 </template>
 
@@ -15,11 +16,14 @@
   import Types from '@/components/Copper/Types.vue';
   import {Component, Watch} from 'vue-property-decorator';
 
+  window.localStorage.setItem('version', '0.0.1');
+
   type Record = {
     tags: string[];
     notes: string;
     type: string;
     amount: number;
+    createdAt?: Date
   }
 
   @Component({
@@ -29,7 +33,7 @@
   export default class Copper extends Vue {
 
     tags = ['衣', '食', '住', '行'];
-    records: Record[] = [];
+    records: Record = JSON.parse(window.localStorage.getItem('records') || '[]');
     record: Record = {
       tags: [], notes: '', type: '-', amount: 0
     };
@@ -42,30 +46,25 @@
       this.record.tags = value;
     }
 
-    onUpdateType(value: string) {
-      this.record.type = value;
-    }
-
     onUpdateAmount(value: string) {
       this.record.amount = parseFloat(value);
     }
 
     saveRecord() {
-      const record2 = JSON.parse(JSON.stringify(this.record));
+      const record2: Record = JSON.parse(JSON.stringify(this.record));
+      record2.createdAt = new Date();
       this.records.push(record2);
-      console.log(this.records);
     }
 
     @Watch('records')
     onRecordListChange() {
       window.localStorage.setItem('records', JSON.stringify(this.records));
     }
-
   }
 </script>
 
 <style lang="scss">
-  .xxx {
+  .contentClass {
     display: flex;
     flex-direction: column-reverse;
   }

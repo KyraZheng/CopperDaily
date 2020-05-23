@@ -48,6 +48,7 @@
 
 <style scoped lang="scss">
   .tags {
+    background: white;
     display: flex;
     flex-direction: column-reverse;
     flex-grow: 1;

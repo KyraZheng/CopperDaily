@@ -2,14 +2,16 @@
   <Layout content-class="contentClass">
     <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
     <Types :value.sync="record.type"/>
-    <Notes field-name="备注" placeholder="在这里输入备注" @update:value="onUpdateNotes"/>
+    <div class="notes">
+      <FormItem field-name="备注" placeholder="在这里输入备注" @update:value="onUpdateNotes"/>
+    </div>
     <Tags @update:value="onUpdateTags"/>
   </Layout>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
-  import Notes from '@/components/Copper/Notes.vue';
+  import FormItem from '@/components/Copper/FormItem.vue';
   import NumberPad from '@/components/Copper/NumberPad.vue';
   import Tags from '@/components/Copper/Tags.vue';
   import Types from '@/components/Copper/Types.vue';
@@ -21,7 +23,7 @@
   const tagList = tagListModel.fetch();
 
   @Component({
-    components: {Types, Tags, NumberPad, Notes}
+    components: {FormItem, Types, Tags, NumberPad,}
   })
 
   export default class Copper extends Vue {
@@ -61,5 +63,9 @@
   .contentClass {
     display: flex;
     flex-direction: column-reverse;
+  }
+
+  .notes {
+    padding: 12px 0;
   }
 </style>

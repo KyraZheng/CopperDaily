@@ -21,7 +21,7 @@
   import tagListModel from '@/components/models/tagListModel';
   import FormItem from '@/components/Copper/FormItem.vue';
   import Button from '@/components/Button.vue';
-  import Tags from '@/components/Copper/Tags.vue';
+  import Tag from '@/components/Copper/Tags.vue';
 
   @Component({
     components: {Button, FormItem}
@@ -51,6 +51,7 @@
     remove() {
       if (this.tag) {
         tagListModel.remove(this.tag.id);
+        this.$router.back();
       }
     }
 

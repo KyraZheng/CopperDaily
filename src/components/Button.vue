@@ -26,20 +26,5 @@
       padding: 16px;
       margin-top: 40-16px;
     }
-
-    .createTag {
-      background: cadetblue;
-      border-radius: 4px;
-      border: none;
-      color: white;
-      height: 40px;
-      padding: 0 12px;
-
-      &-wrapper {
-        text-align: center;
-        padding: 16px;
-        margin-top: 40-16px;
-      }
-    }
   }
 </style>

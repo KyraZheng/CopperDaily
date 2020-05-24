@@ -16,8 +16,8 @@
   import Tags from '@/components/Copper/Tags.vue';
   import Types from '@/components/Copper/Types.vue';
   import {Component, Watch} from 'vue-property-decorator';
-  import recordListModel from '@/components/models/recordListModel';
-  import tagListModel from '@/components/models/tagListModel';
+  import recordListModel from '@/models/recordListModel';
+  import tagListModel from '@/models/tagListModel';
 
   const recordList = recordListModel.fetch();
   const tagList = tagListModel.fetch();

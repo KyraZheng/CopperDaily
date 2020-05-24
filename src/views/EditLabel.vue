@@ -18,7 +18,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import {Component} from 'vue-property-decorator';
-  import tagListModel from '@/components/models/tagListModel';
+  import tagListModel from '@/models/tagListModel';
   import FormItem from '@/components/Copper/FormItem.vue';
   import Button from '@/components/Button.vue';
   import Tag from '@/components/Copper/Tags.vue';

@@ -15,11 +15,7 @@
   import NumberPad from '@/components/Copper/NumberPad.vue';
   import Tags from '@/components/Copper/Tags.vue';
   import Types from '@/components/Copper/Types.vue';
-  import {Component, Watch} from 'vue-property-decorator';
-  import recordListModel from '@/models/recordListModel';
-  import tagListModel from '@/models/tagListModel';
-
-  const recordList = recordListModel.fetch();
+  import {Component} from 'vue-property-decorator';
 
   @Component({
     components: {FormItem, Types, Tags, NumberPad,}
@@ -28,7 +24,7 @@
   export default class Copper extends Vue {
 
     tags = window.tagList;
-    recordList: RecordItem[] = recordList;
+    recordList = window.recordList;
     record: RecordItem = {
       tags: [], notes: '', type: '-', amount: 0
     };
@@ -46,12 +42,7 @@
     }
 
     saveRecord() {
-      recordListModel.create(this.record);
-    }
-
-    @Watch('recordList')
-    onRecordListChange() {
-      recordListModel.save();
+      window.createRecord(this.record);
     }
   }
 </script>

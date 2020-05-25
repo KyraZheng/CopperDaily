@@ -5,7 +5,7 @@
     <div class="notes">
       <FormItem field-name="备注" placeholder="在这里输入备注" @update:value="onUpdateNotes"/>
     </div>
-    <Tags @update:value="onUpdateTags"/>
+    <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
   </Layout>
 </template>
 
@@ -20,7 +20,6 @@
   import tagListModel from '@/models/tagListModel';
 
   const recordList = recordListModel.fetch();
-  const tagList = tagListModel.fetch();
 
   @Component({
     components: {FormItem, Types, Tags, NumberPad,}
@@ -28,7 +27,7 @@
 
   export default class Copper extends Vue {
 
-    tags = tagList;
+    tags = window.tagList;
     recordList: RecordItem[] = recordList;
     record: RecordItem = {
       tags: [], notes: '', type: '-', amount: 0
@@ -50,7 +49,7 @@
       recordListModel.create(this.record);
     }
 
-    @Watch('records')
+    @Watch('recordList')
     onRecordListChange() {
       recordListModel.save();
     }

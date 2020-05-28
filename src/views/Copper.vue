@@ -16,14 +16,19 @@
   import Tags from '@/components/Copper/Tags.vue';
   import Types from '@/components/Copper/Types.vue';
   import {Component} from 'vue-property-decorator';
-  import store from '@/store/index2';
+  import oldStore from '@/store/index2.ts';
 
   @Component({
-    components: {FormItem, Types, Tags, NumberPad,}
+    components: {Tags, FormItem, Types, NumberPad},
+    computed: {
+      recordList() {
+        return this.$store.state.count;
+      }
+    }
   })
 
   export default class Copper extends Vue {
-    recordList = store.recordList;
+    recordList = oldStore.recordList;
     record: RecordItem = {
       tags: [], notes: '', type: '-', amount: 0
     };
@@ -37,7 +42,7 @@
     }
 
     saveRecord() {
-      store.createRecord(this.record);
+      oldStore.createRecord(this.record);
     }
   }
 </script>

@@ -15,13 +15,12 @@
   import FormItem from '@/components/Copper/FormItem.vue';
   import NumberPad from '@/components/Copper/NumberPad.vue';
   import Tags from '@/components/Copper/Tags.vue';
-  import Types from '@/components/Copper/Types.vue';
   import {Component} from 'vue-property-decorator';
   import Tabs from '@/components/Tabs.vue';
   import recordTypeList from '@/constants/recordTypeList';
 
   @Component({
-    components: {Tabs, Tags, FormItem, Types, NumberPad},
+    components: {Tabs, Tags, FormItem, NumberPad},
   })
 
   export default class Copper extends Vue {

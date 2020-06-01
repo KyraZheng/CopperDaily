@@ -51,8 +51,8 @@
   }
 </script>
 
-<style lang="scss">
-  .contentClass {
+<style lang="scss" scoped>
+  ::v-deep .contentClass {
     display: flex;
     flex-direction: column-reverse;
   }

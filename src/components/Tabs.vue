@@ -21,14 +21,12 @@
     classPrefix?: string;
     @Prop({type: String, default: '64px'})
     height!: string;
-
     liClass(item: DataSourceItem) {
       return {
         [this.classPrefix + '-tabs-item']: this.classPrefix,
         selected: item.value === this.value
       };
     }
-
     select(item: DataSourceItem) {
       this.$emit('update:value', item.value);
     }

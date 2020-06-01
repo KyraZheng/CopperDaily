@@ -11,20 +11,22 @@
 </template>
 
 <style scoped lang="scss">
-  ::v-deep .type-tabs-item {
-    background: #d9d9d9;
+  ::v-deep {
+    .type-tabs-item {
+      background: #d9d9d9;
 
-    &.selected {
-      background: cadetblue;
+      &.selected {
+        background: cadetblue;
 
-      &::after {
-        display: none;
+        &::after {
+          display: none;
+        }
       }
     }
-  }
 
-  ::v-deep .interval-tabs-item {
-    height: 48px;
+    .interval-tabs-item {
+      /*height: 48px;*/
+    }
   }
 </style>
 <script lang="ts">
